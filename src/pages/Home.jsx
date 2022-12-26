@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Product from "../components/common/ProductTile";
 import NavItem from "../components/Home/NavItem";
 import './../css/Home/HomePage.css';
 
 export default function Home(){
-
 
     const sampleItems = { 1: {
                 key: 1,
@@ -41,21 +41,28 @@ export default function Home(){
                 imageName: "chocotiramisu"
             }
     }
+    const checkoutPath = "/checkout";
 
     const [cart, setCart] = useState({});
     const [items, setItems] = useState(sampleItems);
     const [itemKeys, setItemKeys] = useState(Object.keys(items));
 
+
+    const navigate = useNavigate();
     const addItemToCart = (key)=>{
         console.log("Adding new Item");
-        setCart({...cart, [key]: 1})
+        setCart({...cart, [key]: {quantity: 1, name: items[key].name}})
         console.log(cart);
     }
 
     const changeItemCount = (key, count)=>{
         console.log("Change Item count");
-        setCart({...cart, [key]: cart[key]+count})
+        setCart({...cart, [key]: { quantity: cart[key].quantity+count, name: cart[key].name}})
         console.log(cart);
+    }
+
+    const goToCheckout = ()=>{
+        navigate(checkoutPath, { state: {cart: cart}});
     }
 
     const navItems = [
@@ -73,13 +80,14 @@ export default function Home(){
                     <NavItem title={navItems[2][0]} desc={navItems[2][1]}/>
                 </div>
     
+                <div onClick = {()=>goToCheckout()}>Checkout</div>
                 <h2>NEW PRODUCTS</h2>
     
                 <LineDivide/>
                 <div className = "products">
                         <div className = "product-grid">
                             {
-                                itemKeys.map(itemKey => <Product key = {itemKey} item = {items[itemKey]} addToCart = {addItemToCart} updateCart = {changeItemCount} quantity = {cart.hasOwnProperty(itemKey)? cart[itemKey]: 0}/>)
+                                itemKeys.map(itemKey => <Product key = {itemKey} item = {items[itemKey]} addToCart = {addItemToCart} updateCart = {changeItemCount} quantity = {cart.hasOwnProperty(itemKey)? cart[itemKey].quantity: 0}/>)
                             }
                         </div>
                 </div>
