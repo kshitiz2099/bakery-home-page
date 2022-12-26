@@ -12,7 +12,7 @@ export default function Checkout(){
     }
 
     return(
-        <div className="checkout-page" onClick={()=>console.log(cart)}>
+        <div className="checkout-page">
             <div>Checkout Page</div>
             <div className = "checkout-table">
                 <div className="checkout-table-header">
@@ -21,11 +21,11 @@ export default function Checkout(){
                     <div>Quantity</div>
                 </div>
                 <div className="checkout-table-rows">
-                    {keys.map(key=> <CheckoutItem key = {key} id = {key} name = {cart[key].name} quantity = {cart[key].quantity}/>)}
+                    {keys.filter(key => cart[key].quantity!=0).map(key=>  <CheckoutItem key = {key} id = {key} name = {cart[key].name} quantity = {cart[key].quantity}/>)}
                 </div>
             </div>
 
-            <button className = "checkout-btn" type="submit" onClick = {()=>finalCheckout}>Checkout</button>
+            <button className = "checkout-btn" type="submit" onClick = {()=>finalCheckout()}>Checkout</button>
         </div>
     )
 }
