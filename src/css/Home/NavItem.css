@@ -1,0 +1,6 @@
+.nav-item{
+    border: 1px solid black;
+    flex-basis: 33%;
+    min-width: 300px;
+    flex-grow: 1;
+}
