@@ -20,7 +20,7 @@ export default function Product({item, quantity, addToCart, updateCart}){
             <p className="name">{item.name}</p>
             <p className="price">Rs. {item.price}</p>
             {
-            quantity==0 || quantity==null? <AddToCart itemId = {item.key} onClick = {addToCart}/>:
+            quantity==0 || quantity==null? <AddToCart itemId = {item.key} name = {item.name} onClick = {addToCart}/>:
                 <UpdateCart onClick = {updateCart} quantity = {quantity}  itemId = {item.key}/>
             }
         </div>

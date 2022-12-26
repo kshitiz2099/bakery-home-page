@@ -3,4 +3,17 @@
     flex-basis: 33%;
     min-width: 300px;
     flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.navbar-image{
+    height: fit-content;
+    width: fit-content;
+    padding: 5px;
+}
+
+.navbar-image img{
+    width: 80%;
+    object-fit: cover;
 }

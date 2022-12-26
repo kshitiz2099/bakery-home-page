@@ -1,14 +1,32 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
+import CheckoutItem from "../components/Checkout/CheckoutItem";
+import { useCart } from "../Contexts/CartContext";
 
 export default function Checkout(){
 
-    const {state} = useLocation();
-    const {cart} = state;
+    const {cart} = useCart();
+    const keys = (cart==null)? [] : Object.keys(cart);
+
+    const finalCheckout = ()=>{
+        console.log(cart);
+    }
 
     return(
-        <div onClick={()=>console.log(cart)}>
-            Checkout Page
+        <div className="checkout-page" onClick={()=>console.log(cart)}>
+            <div>Checkout Page</div>
+            <div className = "checkout-table">
+                <div className="checkout-table-header">
+                    <div>S.No.</div>
+                    <div>Name</div>
+                    <div>Quantity</div>
+                </div>
+                <div className="checkout-table-rows">
+                    {keys.map(key=> <CheckoutItem key = {key} id = {key} name = {cart[key].name} quantity = {cart[key].quantity}/>)}
+                </div>
+            </div>
+
+            <button className = "checkout-btn" type="submit" onClick = {()=>finalCheckout}>Checkout</button>
         </div>
     )
 }

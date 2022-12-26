@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Product from "../components/common/ProductTile";
 import NavItem from "../components/Home/NavItem";
+import { useCart } from "../Contexts/CartContext";
 import './../css/Home/HomePage.css';
 
 export default function Home(){
@@ -43,23 +44,12 @@ export default function Home(){
     }
     const checkoutPath = "/checkout";
 
-    const [cart, setCart] = useState({});
     const [items, setItems] = useState(sampleItems);
     const [itemKeys, setItemKeys] = useState(Object.keys(items));
 
+    const {cart, addItemToCart, changeItemCount} = useCart();
 
     const navigate = useNavigate();
-    const addItemToCart = (key)=>{
-        console.log("Adding new Item");
-        setCart({...cart, [key]: {quantity: 1, name: items[key].name}})
-        console.log(cart);
-    }
-
-    const changeItemCount = (key, count)=>{
-        console.log("Change Item count");
-        setCart({...cart, [key]: { quantity: cart[key].quantity+count, name: cart[key].name}})
-        console.log(cart);
-    }
 
     const goToCheckout = ()=>{
         navigate(checkoutPath, { state: {cart: cart}});
@@ -75,9 +65,9 @@ export default function Home(){
             <div className = "home-page">
                 <div className="top-color"></div>
                 <div className = "nav-bar">
-                    <NavItem title={navItems[0][0]} desc={navItems[0][1]}/>
-                    <NavItem title={navItems[1][0]} desc={navItems[1][1]}/>
-                    <NavItem title={navItems[2][0]} desc={navItems[2][1]}/>
+                    <NavItem imageName = "products" title={navItems[0][0]} desc={navItems[0][1]}/>
+                    <NavItem imageName = "cake" title={navItems[1][0]} desc={navItems[1][1]}/>
+                    <NavItem imageName = "recipe" title={navItems[2][0]} desc={navItems[2][1]}/>
                 </div>
     
                 <div onClick = {()=>goToCheckout()}>Checkout</div>
@@ -87,7 +77,7 @@ export default function Home(){
                 <div className = "products">
                         <div className = "product-grid">
                             {
-                                itemKeys.map(itemKey => <Product key = {itemKey} item = {items[itemKey]} addToCart = {addItemToCart} updateCart = {changeItemCount} quantity = {cart.hasOwnProperty(itemKey)? cart[itemKey].quantity: 0}/>)
+                                itemKeys.map(itemKey => <Product key = {itemKey} item = {items[itemKey]} addToCart = {addItemToCart} updateCart = {changeItemCount} quantity = {cart?.hasOwnProperty(itemKey)? cart[itemKey].quantity: 0}/>)
                             }
                         </div>
                 </div>
