@@ -1,4 +1,4 @@
-import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import { CartUpdate } from './Contexts/CartContext';
 import Checkout from './pages/Checkout';

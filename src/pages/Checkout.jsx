@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation } from "react-router-dom";
 import CheckoutItem from "../components/Checkout/CheckoutItem";
 import { useCart } from "../Contexts/CartContext";
 

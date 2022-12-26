@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Product from "../components/common/ProductTile";
 import NavItem from "../components/Home/NavItem";
