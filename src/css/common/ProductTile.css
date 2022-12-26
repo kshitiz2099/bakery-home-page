@@ -58,3 +58,39 @@
     cursor: pointer ;
     background-color: aliceblue;
 }
+
+.update-cart{
+    margin: 17px auto 0 auto;
+    border-radius: 1px;
+    width: 45%;
+    font-size: 16px;
+    height: 20px;
+    padding: 0 0;
+    display: flex;
+}
+
+.update-cart div{
+    margin: 0;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: rgb(201, 23, 23);
+}
+.update-cart div:nth-of-type(odd){
+    vertical-align:middle;
+    background-color: white;
+    flex-grow: 1;
+    border: 1px solid black;
+}
+
+.update-cart div:nth-of-type(odd):hover{
+    flex-grow: 1;
+    border: 1px solid black;
+    background-color: aliceblue;
+    cursor: pointer;
+}
+
+.update-cart div:nth-of-type(even){
+    flex-grow: 1;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    background-color: white;
+}

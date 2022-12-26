@@ -1,7 +1,8 @@
 import React from "react";
 import './../../css/common/ProductTile.css';
 import AddToCart from "./AddToCart";
-export default function Product({item, addToCart}){
+import UpdateCart from "./UpdateCart";
+export default function Product({item, quantity, addToCart, updateCart}){
 
     let image = null;
 
@@ -18,16 +19,10 @@ export default function Product({item, addToCart}){
             </div>
             <p className="name">{item.name}</p>
             <p className="price">Rs. {item.price}</p>
-            <AddToCart itemId = {item.key} onClick = {addToCart}/>
-        </div>
-    )
-}
-
-
-function ChangeValue(){
-    return(
-        <div>
-            Change Value
+            {
+            quantity==0 || quantity==null? <AddToCart itemId = {item.key} onClick = {addToCart}/>:
+                <UpdateCart onClick = {updateCart} quantity = {quantity}  itemId = {item.key}/>
+            }
         </div>
     )
 }

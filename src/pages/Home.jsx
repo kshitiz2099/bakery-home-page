@@ -42,21 +42,19 @@ export default function Home(){
             }
     }
 
-    const [cart, updateCart] = useState({});
+    const [cart, setCart] = useState({});
     const [items, setItems] = useState(sampleItems);
-    
+    const [itemKeys, setItemKeys] = useState(Object.keys(items));
 
     const addItemToCart = (key)=>{
-        console.log(key);
+        console.log("Adding new Item");
+        setCart({...cart, [key]: 1})
+        console.log(cart);
+    }
 
-        if(cart.hasOwnProperty(key)){
-            console.log("Item exists, updating count");
-            updateCart({...cart, [key]: cart[key]+1});
-        }else{
-            console.log("Adding new Item");
-            updateCart({[key]: 1, ...cart})
-        }
-        
+    const changeItemCount = (key, count)=>{
+        console.log("Change Item count");
+        setCart({...cart, [key]: cart[key]+count})
         console.log(cart);
     }
 
@@ -66,7 +64,6 @@ export default function Home(){
                         ["Recipes", "Excepteur sint occaecat cupidatat non proident"]
                     ];
 
-        
         return(
             <div className = "home-page">
                 <div className="top-color"></div>
@@ -81,11 +78,9 @@ export default function Home(){
                 <LineDivide/>
                 <div className = "products">
                         <div className = "product-grid">
-                            <Product item = {items[1]} addToCart = {addItemToCart}/>
-                            <Product item = {items[2]} addToCart = {addItemToCart}/>
-                            <Product item = {items[3]} addToCart = {addItemToCart}/>
-                            <Product item = {items[4]} addToCart = {addItemToCart}/>
-                            <Product item = {items[5]} addToCart = {addItemToCart}/>
+                            {
+                                itemKeys.map(itemKey => <Product key = {itemKey} item = {items[itemKey]} addToCart = {addItemToCart} updateCart = {changeItemCount} quantity = {cart.hasOwnProperty(itemKey)? cart[itemKey]: 0}/>)
+                            }
                         </div>
                 </div>
             </div>
