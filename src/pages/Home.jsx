@@ -11,35 +11,40 @@ export default function Home(){
                 key: 1,
                 name: "Tiramisu",
                 price: 280,
-                imageName: "tiramisu"
+                imageName: "tiramisu",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"
             },
             
             2: {
                 key: 2,
                 name: "Chocolate Mousse",
                 price: 200,
-                imageName: "chocomousse"
+                imageName: "chocomousse",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"
             },
             
             3: {
                 key: 3,
                 name: "Cheesecake",
                 price: 350,
-                imageName: "cheesecake"
+                imageName: "cheesecake",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"
             },
             
             4: {
                 key:4,
                 name: "Waffle",
                 price: 300,
-                imageName: "waffle"
+                imageName: "waffle",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"
             },
 
             5: {
                 key: 5,
                 name: "Choco Tiramisu",
                 price: 280,
-                imageName: "chocotiramisu"
+                imageName: "chocotiramisu",
+                description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut"
             }
     }
     const checkoutPath = "/checkout";
