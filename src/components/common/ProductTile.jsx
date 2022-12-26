@@ -1,26 +1,28 @@
 import React from "react";
 import './../../css/common/ProductTile.css';
+import AddToCart from "./AddToCart";
+export default function Product({item, addToCart}){
 
-export default function Product({key, image, name, price, desc}){
+    let image = null;
+
+    try{
+        image = require("./../../images/"+item.imageName+".jpg");
+    }catch{
+        
+    }
+
     return(
-        <div className="product">
+        <div className="product" key={item.key}>
             <div className="img-box">
-                <img src={image} alt={name}/>
+                <img src={image} alt={item.name}/>
             </div>
-            <p className="name">{name}</p>
-            <p className="price">Rs. {price}</p>
-            <AddToCart/>
+            <p className="name">{item.name}</p>
+            <p className="price">Rs. {item.price}</p>
+            <AddToCart itemId = {item.key} onClick = {addToCart}/>
         </div>
     )
 }
 
-function AddToCart(){
-    return(
-        <div className="add-to-cart">
-            <p>Add to Cart</p>
-        </div>
-    )
-}
 
 function ChangeValue(){
     return(
