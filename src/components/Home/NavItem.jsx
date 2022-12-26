@@ -16,9 +16,13 @@ export default function NavItem({imageName, title, desc}){
             <div className = "navbar-image">
                 <img src={image} alt={title}/>
             </div>
-            <div>
-                <h3>{title}</h3>
-                <p>{desc}</p>
+            <div className = "navbar-text">
+                <div>
+                    <h3>{title}</h3>
+                </div>
+                <div>
+                    <p>{desc}</p>
+                </div>
             </div>
         </div>
     )

@@ -1,19 +1,27 @@
 .nav-item{
-    border: 1px solid black;
-    flex-basis: 33%;
+    flex-basis: 25%;
     min-width: 300px;
     flex-grow: 1;
     display: flex;
     align-items: center;
+    margin: 0 30px;
 }
 
 .navbar-image{
     height: fit-content;
+    max-height: 250px;
     width: fit-content;
     padding: 5px;
 }
 
 .navbar-image img{
-    width: 80%;
+    max-height: 150px;
     object-fit: cover;
+    overflow: hidden;
+}
+
+.navbar-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }

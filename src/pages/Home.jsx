@@ -63,14 +63,18 @@ export default function Home(){
 
         return(
             <div className = "home-page">
-                <div className="top-color"></div>
+                
+                <div className="top-color">
+                    <div className = "home-to-checkout-btn" onClick = {()=>goToCheckout()}>Checkout</div>
+                </div>
+
+                
                 <div className = "nav-bar">
                     <NavItem imageName = "products" title={navItems[0][0]} desc={navItems[0][1]}/>
                     <NavItem imageName = "cake" title={navItems[1][0]} desc={navItems[1][1]}/>
                     <NavItem imageName = "recipe" title={navItems[2][0]} desc={navItems[2][1]}/>
                 </div>
     
-                <div onClick = {()=>goToCheckout()}>Checkout</div>
                 <h2>NEW PRODUCTS</h2>
     
                 <LineDivide/>
