@@ -21,4 +21,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes, and is ready to be deployed.\
 
-### Note: To view the description of an item on the page, click the image.
+### UI
+1. Add to Cart button will allow you to add or remove items to the cart.
+2. Click the images of the items to show description of the item.
+3. You can go to the checkout page with the green button at the top left corner of the home page.
+4. Checkout button on the checkout page will display the payload in the console.
